@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // launches app to first screen
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = UINavigationController(rootViewController: FirstScreen())
+        window?.rootViewController = UINavigationController(rootViewController: HomeScreen())
         window?.makeKeyAndVisible()
     }
 

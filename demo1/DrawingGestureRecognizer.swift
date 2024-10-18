@@ -1,3 +1,6 @@
+
+import UIKit
+
 class DrawingGestureRecognizer: UIPanGestureRecognizer {
     var drawingPath = UIBezierPath()
     
