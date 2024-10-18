@@ -20,7 +20,7 @@ class ColorSelectorViewController: UIViewController {
 
     // Setup buttons for selecting different colors
     func setUpColorButtons() {
-        let colors: [UIColor] = [.red, .blue, .green, .black, .orange]
+        let colors: [UIColor] = [.red, .blue, .green, .black, .orange, .purple]
         let buttonWidth: CGFloat = 50
         let spacing: CGFloat = 20
         let totalWidth = (buttonWidth + spacing) * CGFloat(colors.count) - spacing
