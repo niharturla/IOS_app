@@ -35,6 +35,28 @@ def upload_paths():
 
     db.session.commit()
     return jsonify({"message": "Paths uploaded successfully"}), 201
+@app.route("/process_paths", methods=["POST"])
+def process_paths():
+    data = request.json  # List of paths (each path is a list of {"x": float, "y": float})
+    if not data:
+        return jsonify({"error": "No path data received"}), 400
+
+    processed_paths = []
+    for path in data:
+        points = np.array([[point["x"], point["y"]] for point in path])  # Convert to NumPy array
+
+        # Example processing: Normalize the path to fit within a unit square
+        min_coords = np.min(points, axis=0)
+        max_coords = np.max(points, axis=0)
+        normalized_points = (points - min_coords) / (max_coords - min_coords)
+
+        # Convert back to a list of dictionaries for JSON response
+        processed_path = [{"x": float(x), "y": float(y)} for x, y in normalized_points]
+        processed_paths.append(processed_path)
+
+    return jsonify({"processed_paths": processed_paths}), 200
+
+
 
 @app.route("/get_paths", methods=["GET"])
 def get_paths():
